@@ -1,0 +1,39 @@
+<form action="http://leaguedashboard.com/signup" method="post">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-lg-7">
+        <p>Enter a domain for your league dashboard, i.e http://<b>mysite</b>.leaguedashboard.com/</p>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">http://</span>
+          <input type="text" class="form-control" placeholder="mysite" aria-describedby="basic-addon1" ng-model="inSignupSubname"  name="subname">
+          <span class="input-group-addon" id="basic-addon1">leaguedashboard.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">ESPN League ID</span>
+          <input type="text" class="form-control" placeholder="716644" aria-describedby="basic-addon1" ng-model="inSignupLeagueId"  name="leagueId">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+     <div class="col-lg-2">
+      <input type="button" ng-click="signup()" value="Signup" class="btn btn-success">
+      </div>
+    </div>
+
+  </div>
+</form>
+
+<div class="alert alert-success" ng-show="showAlert" role="alert" id="goodnews">
+  This alert should be good news.
+</div>
+
+
+
+

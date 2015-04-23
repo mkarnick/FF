@@ -1,0 +1,4 @@
+nohup python rest.py 10.0.0.253:80 --cors &
+#nohup http-server -a 10.0.0.253 -p 8040 --cors &
+#nohup python mattyballsite/manage.py runserver 10.0.0.253:8000 &
+

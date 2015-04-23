@@ -1,0 +1,17 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" ng-repeat="team in json_allRosters track by $index">
+  <div class="panel panel-danger" >
+    <div class="panel-heading" role="tab" id="headingTwo{{$index}}">{{team.name}}
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo{{$index}}" aria-expanded="false" aria-controls="collapseTwo{{$index}}">
+          Collapsible Group Item #2
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo{{$index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo{{$index}}">
+      <div class="panel-body">
+        <h1 ng-repeat="player in team.roster">{{player}}</h1>
+      </div>
+    </div>
+  </div>
+
+</div>
