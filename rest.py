@@ -4,9 +4,10 @@ import numpy as np
 import os, sys, re
 import MySQLdb as mdb
 sys.path.insert(1,'/usr/local/lib/python2.7/site-packages/')
-sys.path.insert(1,'/Library/Python/2.7/site-packages/')
+sys.path.insert(1,'/Library/Python/2.7/site-packages/') 
 sys.path.insert(1,'/root/Site_ff/')
 sys.path.insert(1,'/Users/karnick/Development/Django/FFSITE/')
+sys.path.insert(1,'/root/FF/')
 os.environ["DJANGO_SETTINGS_MODULE"] = "FFSITE.settings"
 
 # sys.path.insert(1,'/Users/karnick/Development/Angular/')
