@@ -56,9 +56,9 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 
 
 	$scope.signup = function() {
-		signupResult = SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
+		SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
 		$scope.showAlert = 1;
-		$scope.signupResult = signupResult;
+		
 
 	}
 
@@ -80,10 +80,8 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 	
 myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', function($scope, Service_Shared, SignupService) {
 	window.MY_SCOPE = $scope;
-	$scope.signupResult = 0;
 	$scope.signup = function() {
-			signupResult = SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
-			$scope.signupResult = signupResult;
+			SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
 			$scope.showAlert = 1;
 
 		}
