@@ -163,7 +163,7 @@ myApp.factory('SignupService',function($http) {
   
 
 	SignupService.post = function(inSub, inLeague) {
-		$http.post('/signup', {subname:inSub, leagueId:inLeague}).
+		return $http.post('/signup', {subname:inSub, leagueId:inLeague}).
 		  success(function(data, status, headers, config) {
 		  	return 1
 		  }).
