@@ -4,6 +4,8 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 	window.MY_SCOPE = $scope
 
 	$scope.inWeek = 1
+	$scope.signupResult = 0
+
 	$scope.dataMessage= Service_Shared.message
 
 	$scope.ff_teamList = function() {
@@ -54,8 +56,9 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 
 
 	$scope.signup = function() {
-		SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
-		$scope.showAlert = 1
+		signupResult = SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
+		$scope.showAlert = 1;
+		$scope.signupResult = signupResult;
 
 	}
 
@@ -78,8 +81,10 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', function($scope, Service_Shared, SignupService) {
 	window.MY_SCOPE = $scope
 	$scope.signup = function() {
-			SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
+			signupResult = SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
+			$scope.signupResult = signupResult
 			$scope.showAlert = 1
+
 		}
 
 		
@@ -159,8 +164,10 @@ myApp.factory('SignupService',function($http) {
 	SignupService.post = function(inSub, inLeague) {
 		$http.post('/signup', {subname:inSub, leagueId:inLeague}).
 		  success(function(data, status, headers, config) {
+		  	return 1
 		  }).
 		  error(function(data, status, headers, config) {
+		  	return 0
 		  });
 	}
 
