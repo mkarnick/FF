@@ -77,7 +77,7 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
     ]);
 	
 myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', function($scope, Service_Shared, SignupService) {
-	$scope.signupInfo = { signupState: 'danger', signupMsg:"This is the message" };
+	$scope.signupresult = { signupState: 'danger', signupMsg:"This is the message" };
 	window.MY_SCOPE = $scope;
 	$scope.signup = function() {
 			SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
