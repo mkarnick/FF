@@ -80,12 +80,9 @@ myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', 
 	window.MY_SCOPE = $scope;
 	$scope.signup = function() {
 			SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
-			$scope.postResult = SignupService.result
 			$scope.showAlert = 1;
 			$scope.signupresult = { signupState: 'danger', signupMsg:"This is the message" };
-
 		}
-
 		
 }])
 
@@ -163,10 +160,8 @@ myApp.factory('SignupService',function($http) {
 	SignupService.post = function(inSub, inLeague) {
 		$http.post('/signup', {subname:inSub, leagueId:inLeague}).
 		  success(function(data, status, headers, config) {
-		  	this.result = 1
 		  }).
 		  error(function(data, status, headers, config) {
-		  	this.result = -1
 		  });
 	}
 
