@@ -79,7 +79,8 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', function($scope, Service_Shared, SignupService) {
 	window.MY_SCOPE = $scope;
 	$scope.signup = function() {
-			$scope.postResult = SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
+			SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
+			$scope.postResult = SignupService.result
 			$scope.showAlert = 1;
 			$scope.signupresult = { signupState: 'danger', signupMsg:"This is the message" };
 
@@ -162,12 +163,10 @@ myApp.factory('SignupService',function($http) {
 	SignupService.post = function(inSub, inLeague) {
 		$http.post('/signup', {subname:inSub, leagueId:inLeague}).
 		  success(function(data, status, headers, config) {
-		  	result = 1
-		  	return result
+		  	this.result = 1
 		  }).
 		  error(function(data, status, headers, config) {
-		  	result = -1
-		  	return result
+		  	this.result = -1
 		  });
 	}
 
