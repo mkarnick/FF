@@ -1,4 +1,16 @@
 
+myApp.directive("signupstatus", function() {
+	return {
+		restrict: "E",
+		scope: {
+			signupState:'=',
+			signupMsg:'='
+		},
+		templateUrl:'html/signupstatus.html'
+	}
+})
+
+
 myApp.directive("dashstandings", function() {
 	return {
 		restrict: "E",

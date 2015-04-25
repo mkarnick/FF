@@ -6,8 +6,6 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 	$scope.inWeek = 1
 	$scope.signupResult = 0
 
-	$scope.dataMessage= Service_Shared.message
-
 	$scope.ff_teamList = function() {
 		Data_TeamList.get($scope.inLeague, $scope.inYear, function (data) {
 			$scope.json_teamList = data;
@@ -80,6 +78,8 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 	
 myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', function($scope, Service_Shared, SignupService) {
 	window.MY_SCOPE = $scope;
+	$scope.signupState="danger";
+	$scope.signupMsg="This is the message";
 	$scope.signup = function() {
 			SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
 			$scope.showAlert = 1;
