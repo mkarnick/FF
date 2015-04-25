@@ -3,8 +3,7 @@ myApp.directive("signupstatus", function() {
 	return {
 		restrict: "E",
 		scope: {
-			signupState:'=signupMsg',
-			signupMsg:'=signupState'
+			signupInfo:'=signupInfo',
 		},
 		templateUrl:'html/signupstatus.html',
 		transclude:true
