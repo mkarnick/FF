@@ -81,7 +81,11 @@ myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', 
 	$scope.signup = function() {
 			SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
 			$scope.showAlert = 1;
-			$scope.signupresult = { signupState: 'danger', signupMsg:"This is the message" };
+			url = 'http://' + $scope.inSignupSubname + '.leaguedashboard.com'
+			$scope.signupresult = { 
+				signupState: 'success', 
+				signupMsg: 'Your dashboard <a href=' + url + '>' + url + '</a> has been setup successfully.<BR>' 
+			};
 		}
 		
 }])
