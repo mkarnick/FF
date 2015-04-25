@@ -1,7 +1,7 @@
 
 myApp.directive("signupstatus", function() {
 	return {
-		restrict: "E",
+		restrict: "AE",
 		scope: {
 			signupInfo:'=signupInfo',
 		},
