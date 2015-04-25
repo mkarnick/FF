@@ -3,7 +3,7 @@ myApp.directive("signupstatus", function() {
 	return {
 		restrict: "E",
 		scope: {
-			signupInfo:'=indata',
+			signupInfo:'=inData',
 		},
 		templateUrl:'html/signupstatus.html'
 	}
