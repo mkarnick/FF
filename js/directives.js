@@ -6,7 +6,7 @@ myApp.directive("signupstatus", function() {
 			signupInfo:'=signupInfo',
 		},
 		templateUrl:'html/signupstatus.html',
-		transclude:true
+		transclude:false
 	}
 })
 
