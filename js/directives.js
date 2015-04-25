@@ -1,12 +1,11 @@
 
 myApp.directive("signupstatus", function() {
 	return {
-		restrict: "AE",
+		restrict: "E",
 		scope: {
-			signupInfo:'=signupInfo',
+			signupInfo:'=indata',
 		},
-		templateUrl:'html/signupstatus.html',
-		transclude:true
+		templateUrl:'html/signupstatus.html'
 	}
 })
 
