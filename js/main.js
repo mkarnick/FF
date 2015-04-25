@@ -2,7 +2,7 @@ var myApp = angular.module('myApp', [])
 
 myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data_Scoreboard', 'Service_Shared', 'Data_Subdomain', 'SignupService', function($scope, Data_TeamList, Data_AllRosters, Data_Scoreboard, Service_Shared, Data_Subdomain, SignupService) {
 	window.MY_SCOPE = $scope
-
+	$scope.postResult = 0
 	$scope.inWeek = 1
 	$scope.signupResult = 0
 
@@ -79,7 +79,7 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', function($scope, Service_Shared, SignupService) {
 	window.MY_SCOPE = $scope;
 	$scope.signup = function() {
-			SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
+			SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId, $scope);
 			$scope.showAlert = 1;
 			url = 'http://' + $scope.inSignupSubname + '.leaguedashboard.com'
 			$scope.signupresult = { 
@@ -161,11 +161,13 @@ myApp.factory('SignupService',function($http) {
 	var SignupService = {};
   
 	var result = 0
-	SignupService.post = function(inSub, inLeague) {
+	SignupService.post = function(inSub, inLeague, $inScope) {
 		$http.post('/signup', {subname:inSub, leagueId:inLeague}).
 		  success(function(data, status, headers, config) {
+		  	$inScope.postResult = 1;
 		  }).
 		  error(function(data, status, headers, config) {
+		  	$inScope.postResult = -1;
 		  });
 	}
 
