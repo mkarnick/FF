@@ -54,8 +54,10 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 
 
 	$scope.signup = function() {
-		SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId);
+		SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId, $scope);
 		$scope.showAlert = 1;
+		$scope.signupresult.signupState = "info";
+		$scope.signupresult.signupMsg = "Checking availability...";
 		
 
 	}
@@ -79,13 +81,11 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', function($scope, Service_Shared, SignupService) {
 	window.MY_SCOPE = $scope;
 	$scope.signup = function() {
-			SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId, $scope);
-			$scope.showAlert = 1;
-			url = 'http://' + $scope.inSignupSubname + '.leaguedashboard.com'
-			$scope.signupresult = { 
-				signupState: 'success', 
-				signupMsg: 'Your dashboard <a href=' + url + '>' + url + '</a> has been setup successfully.<BR>' 
-			};
+		SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId, $scope);
+		$scope.showAlert = 1;
+		$scope.signupresult.signupState = "info";
+		$scope.signupresult.signupMsg = "Checking availability...";
+	
 		}
 		
 }])
@@ -165,6 +165,9 @@ myApp.factory('SignupService',function($http) {
 		$http.post('/signup', {subname:inSub, leagueId:inLeague}).
 		  success(function(data, status, headers, config) {
 		  	$inScope.postResult = 1;
+		  	$inScope.signupresult.signupState = "success";
+		  	$inScope.signupresult.signupMsg = 'Your dashboard was created.';
+
 		  }).
 		  error(function(data, status, headers, config) {
 		  	$inScope.postResult = -1;
