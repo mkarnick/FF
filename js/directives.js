@@ -5,7 +5,8 @@ myApp.directive("signupstatus", function() {
 		scope: {
 			signupInfo:'=inData',
 		},
-		templateUrl:'html/signupstatus.html'
+		templateUrl:'html/signupstatus.html',
+		transclude=true
 	}
 })
 
