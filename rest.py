@@ -223,4 +223,7 @@ class signup:
         #return "This is the login form result: %s, %s" %(i.subname, i.leagueId)
 
 if __name__ == '__main__':
+    def internalerror():
+        return web.internalerror("Bad, bad server. No donut for you.")
+    app.internalerror = internalerror
     app.run()
