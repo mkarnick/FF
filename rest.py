@@ -213,9 +213,11 @@ class signup:
         print d
         print d['subname']
         print d['leagueId']
-
-        newSignup = Subdomain(subname=d['subname'], leagueId=int(d['leagueId']))
-        newSignup.save()
+        try:
+            newSignup = Subdomain(subname=d['subname'], leagueId=int(d['leagueId']))
+            newSignup.save()
+        except:
+            web.internalerror("Web internal error son")
         print "Saved to ORM"
         raise web.seeother('/')
         
