@@ -83,8 +83,8 @@ myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', 
 	window.MY_SCOPE = $scope;
 	$scope.signup = function() {
 		$scope.showAlert = 1;
-		$scope.signupresult.signupState = "info";
-		$scope.signupresult.signupMsg = "Checking availability...";
+		$scope.signupState = "info";
+		$scope.signupMsg = "Checking availability...";
 		SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId, $scope);
 	
 		}
@@ -164,15 +164,16 @@ myApp.factory('SignupService',function($http) {
 	var result = 0
 	SignupService.post = function(inSub, inLeague, $inScope) {
 		$http.post('/signup', {subname:inSub, leagueId:inLeague}).
-		  success(function(data, status, headers, config) {
-		  	$inScope.postResult = 1;
-		  	$inScope.signupresult.signupState = "success";
-		  	$inScope.signupresult.signupMsg = 'Your dashboard was created.';
+			  success(function(data, status, headers, config) {
+			  	$inScope.postResult = 1;
+			  	$inScope.signupState = "success";
+			  	$inScope.signupMsg = 'Your dashboard was created.';
 
-		  }).
-		  error(function(data, status, headers, config) {
-		  	$inScope.postResult = -1;
-		  });
+			  }).
+			  error(function(data, status, headers, config) {
+			  	$inScope.postResult = -1;
+			  }
+		);
 	}
 
 	return SignupService
