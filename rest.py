@@ -213,6 +213,7 @@ class signup:
         print d
         print d['subname']
         print d['leagueId']
+        print d['email']
         try:
             newSignup = Subdomain(subname=d['subname'], leagueId=int(d['leagueId']))
             newSignup.save()

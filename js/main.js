@@ -162,8 +162,8 @@ myApp.factory('SignupService',function($http) {
 	var SignupService = {};
   
 	var result = 0
-	SignupService.post = function(inSub, inLeague, $inScope) {
-		$http.post('/signup', {subname:inSub, leagueId:inLeague}).
+	SignupService.post = function(inSub, inLeague, inEmail, $inScope) {
+		$http.post('/signup', {subname:inSub, leagueId:inLeague, email:inEmail}).
 			  success(function(data, status, headers, config) {
 			  	$inScope.postResult = 1;
 			  	$inScope.signupState = "success";
@@ -171,7 +171,10 @@ myApp.factory('SignupService',function($http) {
 
 			  }).
 			  error(function(data, status, headers, config) {
-			  	$inScope.postResult = -1;
+			  	$inScope.postResult = -1;	
+			  	$inScope.signupState = "failure";
+			  	$inScope.signupMsg = "Well that didn't work. Try again.";
+
 			  }
 		);
 	}
