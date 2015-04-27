@@ -216,6 +216,7 @@ class signup:
 
         newSignup = Subdomain(subname=d['subname'], leagueId=int(d['leagueId']))
         newSignup.save()
+        print "Saved to ORM"
         raise web.seeother('/')
         
         #return "Form Done"
