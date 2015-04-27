@@ -1,5 +1,32 @@
 var myApp = angular.module('myApp', [])
 
+myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', function($scope, Service_Shared, SignupService) {
+	window.MY_SCOPE = $scope;
+	$scope.signup = function() {
+		$scope.showAlert = 1;
+		$scope.signupState = "info";
+		$scope.signupMsg = "Checking availability...";
+		var onSuccess = function(data, status, headers, config) {
+			  	$scope.postResult = 1;
+			  	$scope.signupState = "success";
+			  	$scope.signupMsg = 'Your dashboard was created.';
+
+			  }
+		var onFailure = function() {
+			  	$scope.postResult = -1;	
+			  	$scope.signupState = "failure";
+			  	$scope.signupMsg = "Well that didn't work. Try again.";
+
+		}
+		SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId, $scope.inSignupEmail, onSuccess, onFailure);
+
+		}
+
+		
+}])
+
+
+
 myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data_Scoreboard', 'Service_Shared', 'Data_Subdomain', 'SignupService', function($scope, Data_TeamList, Data_AllRosters, Data_Scoreboard, Service_Shared, Data_Subdomain, SignupService) {
 	window.MY_SCOPE = $scope
 	$scope.postResult = 0
@@ -79,17 +106,6 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
     //    $scope.ff_teamList(); // Update the position drop down data
     ]);
 	
-myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', function($scope, Service_Shared, SignupService) {
-	window.MY_SCOPE = $scope;
-	$scope.signup = function() {
-		$scope.showAlert = 1;
-		$scope.signupState = "info";
-		$scope.signupMsg = "Checking availability...";
-		SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId, $scope.inSignupEmail, $scope);
-
-		}
-		
-}])
 
 myApp.factory('Service_Shared', function() {
 	 var Service_Shared = 'initSavedData'
@@ -162,21 +178,10 @@ myApp.factory('SignupService',function($http) {
 	var SignupService = {};
   
 	var result = 0
-	SignupService.post = function(inSub, inLeague, inEmail, $inScope) {
+	SignupService.post = function(inSub, inLeague, inEmail, onSuccess, onFailure) {
 		$http.post('/signup', {subname:inSub, leagueId:inLeague, email:inEmail}).
-			  success(function(data, status, headers, config) {
-			  	$inScope.postResult = 1;
-			  	$inScope.signupState = "success";
-			  	$inScope.signupMsg = 'Your dashboard was created.';
-
-			  }).
-			  error(function(data, status, headers, config) {
-			  	$inScope.postResult = -1;	
-			  	$inScope.signupState = "failure";
-			  	$inScope.signupMsg = "Well that didn't work. Try again.";
-
-			  }
-		);
+			  success(onSuccess).
+			  error(onFailure);
 	}
 
 	return SignupService
