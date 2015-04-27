@@ -215,7 +215,7 @@ class signup:
         print d['leagueId']
         print d['email']
         try:
-            newSignup = Subdomain(subname=d['subname'], leagueId=int(d['leagueId']))
+            newSignup = Subdomain(subname=d['subname'], leagueId=int(d['leagueId']), email=d['email'])
             newSignup.save()
         except:
             raise web.internalerror("webb internal error son")

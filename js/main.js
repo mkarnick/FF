@@ -58,7 +58,7 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 		$scope.showAlert = 1;
 		$scope.signupState = "info";
 		$scope.signupMsg = "Checking availability...";
-		SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId, $scope);
+		SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId, $scope.inSignupEmail, $scope);
 		
 
 	}
@@ -85,8 +85,8 @@ myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', 
 		$scope.showAlert = 1;
 		$scope.signupState = "info";
 		$scope.signupMsg = "Checking availability...";
-		SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId, $scope);
-	
+		SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId, $scope.inSignupEmail, $scope);
+
 		}
 		
 }])
