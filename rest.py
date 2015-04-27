@@ -217,7 +217,7 @@ class signup:
             newSignup = Subdomain(subname=d['subname'], leagueId=int(d['leagueId']))
             newSignup.save()
         except:
-            return web.internalerror("webb internal error son")
+            raise web.internalerror("webb internal error son")
         print "Saved to ORM"
         raise web.seeother('/')
         
