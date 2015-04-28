@@ -214,7 +214,7 @@ class signup:
         print "Checking for existing obj"
         existing = Subdomain.objects.filter(subname=d['subname'])
         try:
-            if existing == []:
+            if len(existing) == 0:
                 newSignup = Subdomain(subname=d['subname'], leagueId=int(d['leagueId']), email=d['email']) 
                 newSignup.save()
             else:
