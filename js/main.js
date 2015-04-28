@@ -80,6 +80,13 @@ myApp.controller('DashCtrl', ['$scope', '$interval', 'Data_TeamList', 'Data_AllR
 	}
 	$interval($scope.refreshChat, 10000);
 
+	$scope.submitChat = function() {
+		Data_Chat.post($scope.inSubname, $scope.inChatText, function (data) {
+			$scope.json_chatData = data;
+			$scope.refreshChat()
+		})
+	}
+
 	$scope.setScoreWeek = function(inWeek) {
 		$scope.inWeek = inWeek;
 		$scope.ff_scores();
@@ -185,11 +192,15 @@ myApp.factory('Data_Subdomain', function($http) {
 myApp.factory('Data_Chat', function($http) {
 	var Data_Chat = {};
 	Data_Chat.get = function(inSub, callback) {
-
 		$http.get('http://karnick.me/chat/get/' + inSub).success(function(data) {
 			callback(data);
 		});
 	};
+	Data_Chat.post = function(inSub, inChatText, onSuccess, onFailure) {
+		$http.post('/chat/submit', {subname:inSub, author:'author', chatText:inChatText}).
+			  success(onSuccess).
+			  error(onFailure);
+	}
 	return Data_Chat;
 });
 
