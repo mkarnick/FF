@@ -63,6 +63,7 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 	$scope.loadLeagueFromSubdomain = function() {
 		Data_Subdomain.get(window.location.origin, function (data) {
 			$scope.json_subdomain = data;
+			$scope.inSubname = $scope.json_subdomain[0].pk
 			$scope.inLeague = data[0].fields.leagueId
 			$scope.inYear = 2014;
 			$scope.ff_teamList();
