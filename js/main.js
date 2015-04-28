@@ -26,7 +26,7 @@ myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', 
 
 
 
-myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data_Scoreboard', 'Service_Shared', 'Data_Subdomain', 'SignupService', function($scope, Data_TeamList, Data_AllRosters, Data_Scoreboard, Service_Shared, Data_Subdomain, SignupService) {
+myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data_Scoreboard', 'Service_Shared', 'Data_Subdomain', 'SignupService', 'Data_Chat', function($scope, Data_TeamList, Data_AllRosters, Data_Scoreboard, Service_Shared, Data_Subdomain, SignupService, Data_Chat) {
 	window.MY_SCOPE = $scope
 	$scope.postResult = 0
 	$scope.inWeek = 1
