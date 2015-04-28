@@ -49,8 +49,8 @@ urls = (
     '/(.*)/roster/(.*)/(.*)','ff_teamRoster',
     '/(.*)/roster/(.*)','ff_teamRoster',
 
-    '/chat/submit/(.*)','chat_submit',
-    '/chat/get','chat_get',
+    '/chat/submit','chat_submit',
+    '/chat/get/(.*)','chat_get',
 
     # Serve content from filesystem
     '/(.*)', 'files',
