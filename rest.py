@@ -211,14 +211,17 @@ class signup:
         print web.data()
         d = json.loads(web.data())
         print d
+        print "Checking for existing obj"
         existing = Subdomain.objects.filter(subname=d['subname'])
         try:
             if existing == []:
                 newSignup = Subdomain(subname=d['subname'], leagueId=int(d['leagueId']), email=d['email']) 
                 newSignup.save()
             else:
+                print "Object exists. Bailing out."
                 raise web.seeother('/')
         except:
+            print "Something fucked up. Bailing out"
             raise web.internalerror("webb internal error son")
         print "Saved to ORM"
         raise web.seeother('/')
