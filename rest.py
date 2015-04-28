@@ -234,6 +234,10 @@ class signup:
 
 class chat_submit:
     def POST(self):
+        web.header('Content-Type', 'application/json')
+        web.header('Access-Control-Allow-Origin', '*')
+        web.header('Access-Control-Allow-Credentials', 'true')
+
         print web.data()
         d = json.loads(web.data())
         import datetime
@@ -242,6 +246,10 @@ class chat_submit:
         raise web.seeother('/') 
 class chat_get:
     def GET(self, inSub):
+        web.header('Content-Type', 'application/json')
+        web.header('Access-Control-Allow-Origin', '*')
+        web.header('Access-Control-Allow-Credentials', 'true')
+
         chatData = ChatText.objects.filter(parentLeague=inSub) 
         return serializers.serialize("json", chatData)
 if __name__ == '__main__':
