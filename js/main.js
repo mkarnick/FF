@@ -73,7 +73,7 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 
 
 	$scope.refreshChat = function() {
-		Data_Chat.get($scope.inLeague, function (data) {
+		Data_Chat.get($scope.json_subdomain, function (data) {
 			$scope.json_chatData = data;
 		})
 	}
