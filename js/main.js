@@ -196,7 +196,7 @@ myApp.factory('Data_Chat', function($http) {
 			callback(data);
 		});
 	};
-	Data_Chat.post = function(inSub, inChatText, onSuccess, onFailure) {
+	Data_Chat.post = function(inSub, inChatText, onSuccess) {
 		$http.post('/chat/submit', {subname:inSub, author:'author', chatText:inChatText}).
 			  success(onSuccess).
 			  error(onFailure);
