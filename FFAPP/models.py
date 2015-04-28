@@ -16,3 +16,9 @@ class Choice(models.Model):
     question = models.ForeignKey(Question)
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
+
+class ChatText(models.Model):
+	parentLeague = models.CharField(default='',max_length=50)
+	timestamp = models.DateTimeField()
+	author = models.CharField(default='',max_length=140)
+	commentText = models.CharField(default='',max_length=140)

@@ -71,6 +71,13 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 		})
 	}
 
+
+	$scope.refreshChat = function() {
+		Data_Chat.get($scope.inLeague, function (data) {
+			$scope.json_chatData = data;
+		})
+	}
+
 	$scope.setScoreWeek = function(inWeek) {
 		$scope.inWeek = inWeek;
 		$scope.ff_scores();
@@ -172,6 +179,17 @@ myApp.factory('Data_Subdomain', function($http) {
 });
 
 
+// Create a service to retrieve chat info
+myApp.factory('Data_Chat', function($http) {
+	var Data_Chat = {};
+	Data_AllRosters.get = function(inSub, callback) {
+
+		$http.get('http://karnick.me/chat/get/' + inSub).success(function(data) {
+			callback(data);
+		});
+	};
+	return Data_Chat;
+});
 
 myApp.factory('SignupService',function($http) {
 	var SignupService = {};

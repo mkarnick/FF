@@ -13,7 +13,7 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "FFSITE.settings"
 # sys.path.insert(1,'/Users/karnick/Development/Angular/')
 import django
 django.setup()
-from FFAPP.models import Subdomain
+from FFAPP.models import Subdomain, ChatText
 from django.core import serializers
 
 from bs4 import BeautifulSoup
@@ -49,6 +49,8 @@ urls = (
     '/(.*)/roster/(.*)/(.*)','ff_teamRoster',
     '/(.*)/roster/(.*)','ff_teamRoster',
 
+    '/chat/submit/(.*)','chat_submit',
+    '/chat/get','chat_get',
 
     # Serve content from filesystem
     '/(.*)', 'files',
@@ -219,7 +221,8 @@ class signup:
                 newSignup.save()
             else:
                 print "Object exists. Bailing out."
-                raise web.seeother('/')
+                raise web.internalerror("webb internal error son")
+
         except:
             print "Something fucked up. Bailing out"
             raise web.internalerror("webb internal error son")
@@ -229,6 +232,18 @@ class signup:
         #return "Form Done"
         #return "This is the login form result: %s, %s" %(i.subname, i.leagueId)
 
+class chat_submit:
+    def POST(self):
+        print web.data()
+        d = json.loads(web.data())
+        import datetime
+        ts = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+        ChatText(parentLeague=d['subname'], author=d['author'], timestamp=ts) 
+        raise web.seeother('/') 
+class chat_get:
+    def GET(self, inSub):
+        chatData = ChatText.objects.filter(parentLeague=inSub) 
+        return serializers.serialize("json", chatData)
 if __name__ == '__main__':
     def internalerror():
         return web.internalerror("Bad, bad server. No donut for you.")

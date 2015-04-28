@@ -18,6 +18,13 @@ myApp.directive("dashstandings", function() {
 	}
 })
 
+myApp.directive("dashchat", function() {
+	return {
+		restrict: "E",
+		templateUrl:'html/leaguechat.html',
+	}
+})
+
 myApp.directive("dashscoreboard", function() {
 	return {
 		restrict: "E",
