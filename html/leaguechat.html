@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tr ng-repeat="comment in json_chatData">
-        <td>{{comment.timestamp}}</td><td> {{comment.author}}</td><td>{{comment.commentText}}</td>
+        <td>{{comment.fields.timestamp}}</td><td> {{comment.fields.author}}</td><td>{{comment.fields.commentText}}</td>
       </tr>
     </table>
     <input type="button" ng-click="refreshChat()" value="Refresh" class="btn btn-success">
