@@ -74,7 +74,7 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 
 
 	$scope.refreshChat = function() {
-		Data_Chat.get($scope.json_subdomain, function (data) {
+		Data_Chat.get($scope.inSubname, function (data) {
 			$scope.json_chatData = data;
 		})
 	}
