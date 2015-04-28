@@ -211,12 +211,13 @@ class signup:
         print web.data()
         d = json.loads(web.data())
         print d
-        print d['subname']
-        print d['leagueId']
-        print d['email']
+        existing = Subdomain.objects.filter(subname=d['subname'])
         try:
-            newSignup = Subdomain(subname=d['subname'], leagueId=int(d['leagueId']), email=d['email'])
-            newSignup.save()
+            if existing == []:
+                newSignup = Subdomain(subname=d['subname'], leagueId=int(d['leagueId']), email=d['email']) 
+                newSignup.save()
+            else:
+                raise web.seeother('/')
         except:
             raise web.internalerror("webb internal error son")
         print "Saved to ORM"
