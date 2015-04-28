@@ -26,7 +26,7 @@ myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', 
 
 
 
-myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data_Scoreboard', 'Service_Shared', 'Data_Subdomain', 'SignupService', 'Data_Chat', function($scope, Data_TeamList, Data_AllRosters, Data_Scoreboard, Service_Shared, Data_Subdomain, SignupService, Data_Chat) {
+myApp.controller('DashCtrl', ['$scope', '$interval', 'Data_TeamList', 'Data_AllRosters','Data_Scoreboard', 'Service_Shared', 'Data_Subdomain', 'SignupService', 'Data_Chat', function($scope, $interval, Data_TeamList, Data_AllRosters, Data_Scoreboard, Service_Shared, Data_Subdomain, SignupService, Data_Chat) {
 	window.MY_SCOPE = $scope
 	$scope.postResult = 0
 	$scope.inWeek = 1
@@ -79,7 +79,7 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 		})
 	}
 	$interval($scope.refreshChat, 1000);
-	
+
 	$scope.setScoreWeek = function(inWeek) {
 		$scope.inWeek = inWeek;
 		$scope.ff_scores();
