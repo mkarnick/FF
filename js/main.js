@@ -182,7 +182,7 @@ myApp.factory('Data_Subdomain', function($http) {
 // Create a service to retrieve chat info
 myApp.factory('Data_Chat', function($http) {
 	var Data_Chat = {};
-	Data_AllRosters.get = function(inSub, callback) {
+	Data_Chat.get = function(inSub, callback) {
 
 		$http.get('http://karnick.me/chat/get/' + inSub).success(function(data) {
 			callback(data);
