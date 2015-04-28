@@ -83,7 +83,8 @@ myApp.controller('DashCtrl', ['$scope', '$interval', 'Data_TeamList', 'Data_AllR
 	$scope.submitChat = function() {
 		Data_Chat.post($scope.inSubname, $scope.inChatText, function (data) {
 			$scope.json_chatData = data;
-			$scope.refreshChat()
+			$scope.refreshChat();
+			$scope.inChatText="";
 		})
 	}
 
