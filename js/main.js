@@ -14,7 +14,7 @@ myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', 
 			  }
 		var onFailure = function() {
 			  	$scope.postResult = -1;	
-			  	$scope.signupState = "error";
+			  	$scope.signupState = "danger";
 			  	$scope.signupMsg = "Well that didn't work. What did you fuck up?.";
 		}
 		SignupService.post($scope.inSignupSubname,$scope.inSignupLeagueId, $scope.inSignupEmail, onSuccess, onFailure);
