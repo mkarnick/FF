@@ -78,7 +78,8 @@ myApp.controller('DashCtrl', ['$scope', 'Data_TeamList', 'Data_AllRosters','Data
 			$scope.json_chatData = data;
 		})
 	}
-
+	$interval($scope.refreshChat, 1000);
+	
 	$scope.setScoreWeek = function(inWeek) {
 		$scope.inWeek = inWeek;
 		$scope.ff_scores();
