@@ -36,6 +36,11 @@ urls = (
     # POST for subdomain signup
     '/signup','signup',
 
+urls = (
+    '/logintest','Index',
+    '/login','Login',
+)
+
     # Login form??
     '/users/(.*)', 'login_class',
 
@@ -60,7 +65,37 @@ urls = (
 app = web.application(urls, globals())
 
 
+allowed = (
+    ('jon','pass1'),
+    ('tom','pass2')
+)
 
+
+class Index:
+    def GET(self):
+        if web.ctx.env.get('HTTP_AUTHORIZATION') is not None:
+            return 'This is the index page'
+        else:
+            raise web.seeother('/login')
+
+class Login:
+    def GET(self):
+        auth = web.ctx.env.get('HTTP_AUTHORIZATION')
+        authreq = False
+        if auth is None:
+            authreq = True
+        else:
+            auth = re.sub('^Basic ','',auth)
+            username,password = base64.decodestring(auth).split(':')
+            # if (username,password) in allowed:
+            if 1:
+                raise web.seeother('/')
+            else:
+                authreq = True
+        if authreq:
+            web.header('WWW-Authenticate','Basic realm="Auth example"')
+            web.ctx.status = '401 Unauthorized'
+            return
 
 class getsub:
     def GET(self):
