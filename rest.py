@@ -36,10 +36,8 @@ urls = (
     # POST for subdomain signup
     '/signup','signup',
 
-urls = (
     '/logintest','Index',
     '/login','Login',
-)
 
     # Login form??
     '/users/(.*)', 'login_class',
