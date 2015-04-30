@@ -18,6 +18,16 @@ myApp.directive("dashstandings", function() {
 	}
 })
 
+
+
+myApp.directive("loginform", function() {
+	return {
+		restrict: "E",
+		templateUrl:'html/loginform.html',
+	}
+})
+
+
 myApp.directive("dashchat", function() {
 	return {
 		restrict: "E",
