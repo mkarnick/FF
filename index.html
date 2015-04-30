@@ -61,8 +61,15 @@
             <div class="row">
             <div class="col-lg-6">
                 <div class="collapse" id="viewsubname" >
-                  <input type="text" placeholder="crispleague" ng-model="inEnteredSubname"  name="subname">
+                <div class="input-group">
+                  <span class="input-group-addon" id="sizing-addon2">http://</span>
+                  <input type="text" class="form-control" placeholder="joesleague" aria-describedby="sizing-addon2" ng-model="inEnteredSubname"
+                  <span class="input-group-addon" id="sizing-addon2">.leaguedashboard.com/</span>
                   <a href="http://{{inEnteredSubname}}.leaguedashboard.com" class="btn btn-lg btn-info" ng-click="gotoDash()">Go</a>
+                </div>
+
+              
+                  
                 </div>
                 <a href="#" class="btn btn-lg btn-warning" data-toggle="collapse" data-target="#viewsubname">View Existing</a>
               </div>
