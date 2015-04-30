@@ -1,7 +1,10 @@
 var myApp = angular.module('myApp', [])
 
-myApp.controller('MainPageCtrl',  ['$scope', 'Service_Shared', 'SignupService', function($scope, Service_Shared, SignupService) {
+myApp.controller('MainPageCtrl',  ['$scope', '$location', 'Service_Shared', 'SignupService', function($scope, $location, Service_Shared, SignupService) {
 	window.MY_SCOPE = $scope;
+	$scope.gotoDash = function() {
+		$location.path("http://" + $scope.inEnteredSubname + '.leaguedashboard.com');
+	}
 	$scope.signup = function() {
 		$scope.showAlert = 1;
 		$scope.signupState = "info";
