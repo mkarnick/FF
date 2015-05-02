@@ -275,7 +275,7 @@ class chat_submit:
         d = json.loads(web.data())
         import datetime, time
         ts = time.time()
-        tstamp = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+        tstamp = datetime.datetime.fromtimestamp(ts).strftime('%H:%M:%S')
         NewChat = ChatText(parentLeague=d['subname'], author=d['author'], timestamp=tstamp, commentText=d['chatText']) 
         NewChat.save()
         raise web.seeother('/') 
