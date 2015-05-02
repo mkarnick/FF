@@ -19,6 +19,7 @@ class Choice(models.Model):
 
 class ChatText(models.Model):
 	parentLeague = models.CharField(default='',max_length=50)
-	timestamp = models.DateTimeField()
+	timestamp = models.CharField(default='',max_length=150)
+	actualtimestamp = models.DateTimeField()
 	author = models.CharField(default='',max_length=140)
 	commentText = models.CharField(default='',max_length=140)
