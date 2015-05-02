@@ -11,7 +11,7 @@
           <th scope="column">Name</th>
         </tr>
       </thead>
-      <span ng-repeat="comment in json_chatData track by $index">{{$index}} - {{comment.fields.timestamp}} {{comment.fields.author}}: {{comment.fields.commentText}}
+      <span ng-repeat="comment in json_chatData track by $index">{{$index}} - {{comment.fields.timestamp}} {{comment.fields.author}}: {{comment.fields.commentText}}<BR>
       </span>
     </table>
     <input type="button" ng-click="refreshChat()" value="Refresh" class="btn btn-success">
