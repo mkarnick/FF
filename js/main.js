@@ -1,4 +1,23 @@
 var myApp = angular.module('myApp', [])
+myApp.controller('LoginCtrl', ['$scope','LoginService', function($scope, LoginService) {
+	window.MY_SCOPE = $scope;
+	$scope.login = function() {
+		var onSuccess = function(data, status, headers, config) {
+			  	$scope.loggedIn = 1;
+			  	$scope.loginState = "success";
+			  	$scope.loginMsg = 'Logged In.';
+
+			  }
+		var onFailure = function() {
+			  	$scope.loggedIn = 0
+			  	$scope.loginState = "danger";
+			  	$scope.loginMsg = "Login Error";
+		}
+		LoginService.post($scope.inUser, $scope.inPassword, onSuccess, onFailure)
+	}
+
+
+}])
 
 myApp.controller('MainPageCtrl',  ['$scope', '$location', 'Service_Shared', 'SignupService', function($scope, $location, Service_Shared, SignupService) {
 	window.MY_SCOPE = $scope;

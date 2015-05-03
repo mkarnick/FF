@@ -94,3 +94,17 @@ myApp.factory('SignupService',function($http) {
 
 	})
 
+
+myApp.factory('LoginService',function($http) {
+	var LoginService = {};
+  
+	var result = 0
+	LoginService.post = function(inUser, inPassword, onSuccess, onFailure) {
+		$http.post('/login', {username:inUser, password:inPassword}).
+			  success(onSuccess).
+			  error(onFailure);
+	}
+
+	return LoginService
+
+	})

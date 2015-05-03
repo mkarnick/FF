@@ -63,6 +63,12 @@ myApp.directive("loginpopup",function() {
 	}
 })
 
+myApp.directive("loginsnippet",function() {
+	return {
+		restrict: "E",
+		templateUrl:'html/loginsnippet.html',
+	}
+})
 myApp.directive("gettingstarted",function() {
 	return {
 		restrict: "E",

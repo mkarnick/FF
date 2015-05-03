@@ -13,7 +13,7 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "FFSITE.settings"
 # sys.path.insert(1,'/Users/karnick/Development/Angular/')
 import django
 django.setup()
-from FFAPP.models import Subdomain, ChatText
+from FFAPP.models import Subdomain, ChatText, User
 from django.core import serializers
 
 from bs4 import BeautifulSoup
@@ -71,7 +71,34 @@ class Login:
     def GET(self):
         session.userId = 1
         return str(session.userId)
+    def POST(self):
+        i = web.input()
+        web.header('Content-Type', 'application/json')
+        web.header('Access-Control-Allow-Origin', '*')
+        web.header('Access-Control-Allow-Credentials', 'true')
+        print web.data()
+        d = json.loads(web.data())
+        print d
+        print "Checking for existing user"
+        existing = User.objects.filter(username=d['user'], password=d['pass'])
+        try:
+            if len(existing) == 0:
+                session.userId = 0                
+                raise web.internalerror("Loggin Error")
+            else:
+                thisUser = existing[0]
+                session.userId = thisUser.idx
+                session.username = thisUser.username
+                session.firstName = thisUser.firstName
+                session.lastName = thisUser.lastName
 
+                raise web.seeother('/')
+
+        except:
+            print "Something fucked up. Bailing out"
+            raise web.internalerror("webb internal error son")
+        print "Saved to ORM"
+        raise web.seeother('/')
 class Logout:
     def GET(self):
         session.userId = 0
