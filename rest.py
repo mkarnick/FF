@@ -74,12 +74,12 @@ class Index:
 class Login:
     def GET(self):
         session.logged_in = True
-        raise web.seeother('/')
+        raise web.seeother('/logintest')
 
 class Logout:
     def GET(self):
         session.logged_in = False
-        raise web.seeother('/')
+        raise web.seeother('/logintest')
 
 class getsub:
     def GET(self):
