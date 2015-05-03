@@ -83,9 +83,11 @@ class Login:
         existing = User.objects.filter(username=d['username'], password=d['password'])
         try:
             if len(existing) == 0:
+                print "No user found with that combo"
                 session.userId = 0                
                 raise web.internalerror("Loggin Error")
             else:
+                print "Username found."
                 thisUser = existing[0]
                 session.userId = thisUser.idx
                 session.username = thisUser.username
