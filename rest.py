@@ -286,7 +286,7 @@ class chat_get:
         web.header('Access-Control-Allow-Origin', '*')
         web.header('Access-Control-Allow-Credentials', 'true')
 
-        chatData = ChatText.objects.filter(parentLeague=inSub) 
+        chatData = ChatText.objects.filter(parentLeague=inSub).order_by('actualtimestamp')[:10]
         return serializers.serialize("json", chatData)
 if __name__ == '__main__':
     def internalerror():
