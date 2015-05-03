@@ -62,12 +62,13 @@ urls = (
 
 )
 
-app = web.application(urls, globals())
+# app = web.application(urls,globalsß())
+app = web.application(urls,locals())
 session = web.session.Session(app, web.session.DiskStore('sessions'))  
 
 class Index:
     def GET(self):
-        if session.get('logged_in', True):
+        if session.get('logged_in', False):
             return '<h1>You are logged in</h1><a href="/logout">Logout</a>'
         return '<h1>You are not logged in.</h1><a href="/login">Login now</a>'
 
