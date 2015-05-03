@@ -17,9 +17,19 @@ class Choice(models.Model):
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
 
+class User(models.Model):
+    idx = models.IntegerField(primary_key=True)
+    username = models.CharField(max_length=256, default='')
+    password = models.CharField(max_length=256, default='')
+    firstName = models.CharField(max_length=256, default='')
+    lastName  = models.CharField(max_length=256, default='')
+    email = models.EmailField(null=True)
+    votes = models.IntegerField(default=0)
+
+
 class ChatText(models.Model):
 	parentLeague = models.CharField(default='',max_length=50)
 	timestamp = models.CharField(default='',max_length=150)
-	actualtimestamp = models.DateTimeField()
+	actualtimestamp = models.DateTimeField(default='')
 	author = models.CharField(default='',max_length=140)
 	commentText = models.CharField(default='',max_length=140)
