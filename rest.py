@@ -64,6 +64,20 @@ urls = (
 
 app = web.application(urls,globals())
 
+session = web.session.Session(app, web.session.DiskStore('sessions'), initializer={'userId': 0})
+
+
+class Login:
+    def GET(self):
+        session.userId = 1
+        return str(session.userId)
+
+class Logout:
+    def GET(self):
+        session.userId = 0
+        session.kill()
+        return 0
+
 
 class getsub:
     def GET(self):
