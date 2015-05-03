@@ -183,7 +183,6 @@ myApp.factory('Data_AllRosters', function($http) {
 myApp.factory('Data_Subdomain', function($http) {
 	var Data_Subdomain = {};
 	Data_Subdomain.get = function(requestedUrl, callback) {
-
 		$http.get(requestedUrl + '/getsub').success(function(data) {
 			callback(data);
 		});
@@ -221,3 +220,5 @@ myApp.factory('SignupService',function($http) {
 	return SignupService
 
 	})
+
+
