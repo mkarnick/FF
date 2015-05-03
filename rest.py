@@ -67,7 +67,7 @@ session = web.session.Session(app, web.session.DiskStore('sessions'))
 
 class Index:
     def GET(self):
-        if session.get('logged_in', False):
+        if session.get('logged_in', True):
             return '<h1>You are logged in</h1><a href="/logout">Logout</a>'
         return '<h1>You are not logged in.</h1><a href="/login">Login now</a>'
 
