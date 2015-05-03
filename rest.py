@@ -60,9 +60,9 @@ urls = (
     # Serve content from filesystem
     '/(.*)', 'files',
 
-)
+)  
 
-# app = web.application(urls,globalsß())
+# app = web.application(urls,globals())
 app = web.application(urls,locals())
 session = web.session.Session(app, web.session.DiskStore('sessions'))  
 
