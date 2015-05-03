@@ -5,14 +5,17 @@
   </div>
   <div class="panel-body">
 
-      <span ng-repeat="comment in json_chatData track by $index">{{comment.fields.timestamp}} {{comment.fields.author}}: {{comment.fields.commentText}}<BR>
-      </span>
-    
-    <div class="row">
-    <div class="col-lg-8">
-      <input type="text" class="form-control" placeholder="suck a dick" aria-describedby="basic-addon1" ng-model="inChatText"  name="leagueId">
-      <input type="button" ng-click="submitChat()" value="Send" class="btn btn-default">
+    <span ng-repeat="comment in json_chatData track by $index">{{comment.fields.timestamp}} {{comment.fields.author}}: {{comment.fields.commentText}}<BR/>
+    </span>
+
+    <div class="form-inline">
+      <div class="form-group">
+          <input type="text" class="form-control" placeholder="suck a dick" aria-describedby="basic-addon1" ng-model="inChatText"  name="leagueId"/>
+
+          <input type="button" ng-click="submitChat()" value="Send" class="btn btn-default"/>
       </div>
     </div>
+
   </div>
+
 </div>
