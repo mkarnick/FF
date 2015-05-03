@@ -5,19 +5,14 @@
   </div>
   <div class="panel-body">
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="column">Name</th>
-        </tr>
-      </thead>
-      <span ng-repeat="comment in json_chatData track by $index">{{$index}} - {{comment.fields.timestamp}} {{comment.fields.author}}: {{comment.fields.commentText}}<BR>
+      <span ng-repeat="comment in json_chatData track by $index">{{comment.fields.timestamp}} {{comment.fields.author}}: {{comment.fields.commentText}}<BR>
       </span>
-    </table>
+    
     <div class="row">
+    <div class="col-lg-8">
       <input type="text" class="form-control" placeholder="suck a dick" aria-describedby="basic-addon1" ng-model="inChatText"  name="leagueId">
-
       <input type="button" ng-click="submitChat()" value="Send" class="btn btn-default">
+      </div>
     </div>
   </div>
 </div>
