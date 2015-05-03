@@ -81,26 +81,23 @@ class Login:
         print d
         print "Checking for existing user"
         existing = User.objects.filter(username=d['username'], password=d['password'])
-        try:
-            if len(existing) == 0:
-                print "No user found with that combo"
-                session.userId = 0                
-                raise web.internalerror("Loggin Error")
-            else:
-                print "Username found."
-                thisUser = existing[0]
-                session.userId = thisUser.idx
-                session.username = thisUser.username
-                session.firstName = thisUser.firstName
-                session.lastName = thisUser.lastName
 
-                raise web.seeother('/')
+        if len(existing) == 0:
+            print "No user found with that combo"
+            session.userId = 0                
+            raise web.internalerror("Loggin Error")
+        else:
+            print "Username found."
+            thisUser = existing[0]
+            session.userId = thisUser.idx
+            session.username = thisUser.username
+            session.firstName = thisUser.firstName
+            session.lastName = thisUser.lastName
+            raise web.seeother('/')
 
-        except:
-            print "Something fucked up. Bailing out"
-            raise web.internalerror("webb internal error son")
-        print "Saved to ORM"
-        raise web.seeother('/')
+        # except:
+        #     print "Something fucked up. Bailing out"
+        #     raise web.internalerror("webb internal error son")
 class Logout:
     def GET(self):
         session.userId = 0
