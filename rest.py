@@ -80,7 +80,7 @@ class Login:
         d = json.loads(web.data())
         print d
         print "Checking for existing user"
-        existing = User.objects.filter(username=d['user'], password=d['pass'])
+        existing = User.objects.filter(username=d['username'], password=d['password'])
         try:
             if len(existing) == 0:
                 session.userId = 0                
