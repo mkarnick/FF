@@ -14,10 +14,10 @@
       <span ng-repeat="comment in json_chatData track by $index">{{$index}} - {{comment.fields.timestamp}} {{comment.fields.author}}: {{comment.fields.commentText}}<BR>
       </span>
     </table>
-    <input type="button" ng-click="refreshChat()" value="Refresh" class="btn btn-success">
+    <div class="row">
+      <input type="text" class="form-control" placeholder="suck a dick" aria-describedby="basic-addon1" ng-model="inChatText"  name="leagueId">
 
-    <input type="text" class="form-control" placeholder="suck a dick" aria-describedby="basic-addon1" ng-model="inChatText"  name="leagueId">
-
-    <input type="button" ng-click="submitChat()" value="Send" class="btn btn-default">
+      <input type="button" ng-click="submitChat()" value="Send" class="btn btn-default">
+    </div>
   </div>
 </div>
