@@ -78,7 +78,17 @@ class Logout:
         # session.kill()
         return 0
 
-
+class Index:
+    def GET(self):
+        try:
+            if session.userId==0:
+                return "You are not logged in"
+            elif session.userId==1:
+                return "You ARE logged in!"
+            else:
+                return "Couldn't read your userId"
+        except:
+            return "Faulted. You probably aren't logged in"
 class getsub:
     def GET(self):
         ctx = web.ctx
