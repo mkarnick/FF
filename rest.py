@@ -61,7 +61,7 @@ urls = (
     '/(.*)', 'files',
 
 )  
-
+web.config.debug = False
 app = web.application(urls,globals())
 
 session = web.session.Session(app, web.session.DiskStore('sessions'), initializer={'userId': 0})
