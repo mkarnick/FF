@@ -30,6 +30,5 @@ class User(models.Model):
 class ChatText(models.Model):
 	parentLeague = models.CharField(default='',max_length=50)
 	timestamp = models.CharField(default='',max_length=150)
-	actualtimestamp = models.CharField(default='2000-01-01 00:00', max_length=200)
 	author = models.CharField(default='',max_length=140)
 	commentText = models.CharField(default='',max_length=140)
