@@ -38,6 +38,8 @@ urls = (
 
     '/logintest','Index',
     '/login','Login',
+    '/logout','Logout',
+
 
     # Login form??
     '/users/(.*)', 'login_class',
@@ -61,39 +63,23 @@ urls = (
 )
 
 app = web.application(urls, globals())
-
-
-allowed = (
-    ('jon','pass1'),
-    ('tom','pass2')
-)
-
+session = web.session.Session(app, web.session.DiskStore('sessions'))  
 
 class Index:
     def GET(self):
-        if web.ctx.env.get('HTTP_AUTHORIZATION') is not None:
-            return 'This is the index page'
-        else:
-            raise web.seeother('/login')
+        if session.get('logged_in', False):
+            return '<h1>You are logged in</h1><a href="/logout">Logout</a>'
+        return '<h1>You are not logged in.</h1><a href="/login">Login now</a>'
 
 class Login:
     def GET(self):
-        auth = web.ctx.env.get('HTTP_AUTHORIZATION')
-        authreq = False
-        if auth is None:
-            authreq = True
-        else:
-            auth = re.sub('^Basic ','',auth)
-            username,password = base64.decodestring(auth).split(':')
-            # if (username,password) in allowed:
-            if 1:
-                raise web.seeother('/')
-            else:
-                authreq = True
-        if authreq:
-            web.header('WWW-Authenticate','Basic realm="Auth example"')
-            web.ctx.status = '401 Unauthorized'
-            return
+        session.logged_in = True
+        raise web.seeother('/')
+
+class Logout:
+    def GET(self):
+        session.logged_in = False
+        raise web.seeother('/')
 
 class getsub:
     def GET(self):
