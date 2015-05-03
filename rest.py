@@ -75,7 +75,7 @@ class Login:
 class Logout:
     def GET(self):
         session.userId = 0
-        session.kill()
+        # session.kill()
         return 0
 
 
