@@ -1,8 +1,16 @@
 <div ng-controller="LoginCtrl">
 <form name="form" ng-submit="login()" role="form">
   <input type="text" name="username" id="username" class="form-control" ng-model="inUser" required />
-  <input type="password" name="username" id="username" class="form-control" ng-model="inPassword" required />
+  <input type="password" name="password" id="password" class="form-control" ng-model="inPassword" required />
   <button ng-click="login()">
-  {{loggedIn}} {{loginMsg}}
+  {{loggedIn}} {{loginMsg}}</button>
 </form>
+
+<form name="form" action="login/" role="form" method="post">
+  <input type="text" name="username" id="username" class="form-control" ng-model="inUser" required />
+  <input type="password" name="password" id="password" class="form-control" ng-model="inPassword" required />
+  <button type="submit">
+  {{loggedIn}} {{loginMsg}}</button>
+</form>
+
 </div>
