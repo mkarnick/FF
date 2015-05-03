@@ -62,32 +62,8 @@ urls = (
 
 )  
 
-# app = web.application(urls,globals())
-app = web.application(urls,locals())
-session = web.session.Session(app, web.session.DiskStore('sessions'))  
+app = web.application(urls,globals())
 
-# Hack to make session play nice with the reloader (in debug mode)
-if web.config.get('_session') is None:
-    session = web.session.Session(app, db.SessionDBStore())
-    web.config._session = session
-else:
-    session = web.config._session
-
-class Index:
-    def GET(self):
-        if session.get('logged_in', False):
-            return '<h1>You are logged in</h1><a href="/logout">Logout</a>'
-        return '<h1>You are not logged in.</h1><a href="/login">Login now</a>'
-
-class Login:
-    def GET(self):
-        session.logged_in = True
-        raise web.seeother('/logintest')
-
-class Logout:
-    def GET(self):
-        session.logged_in = False
-        raise web.seeother('/logintest')
 
 class getsub:
     def GET(self):
