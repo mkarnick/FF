@@ -66,6 +66,13 @@ urls = (
 app = web.application(urls,locals())
 session = web.session.Session(app, web.session.DiskStore('sessions'))  
 
+# Hack to make session play nice with the reloader (in debug mode)
+if web.config.get('_session') is None:
+    session = web.session.Session(app, db.SessionDBStore())
+    web.config._session = session
+else:
+    session = web.config._session
+
 class Index:
     def GET(self):
         if session.get('logged_in', False):
