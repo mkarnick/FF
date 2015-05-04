@@ -297,7 +297,7 @@ class chat_submit:
         ts = time.time()
         tstamp = datetime.datetime.now().strftime('%I:%M%p')
         actualtstamp = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-        NewChat = ChatText(parentLeague=d['subname'], author=d['author'], timestamp=tstamp, commentText=d['chatText'],actualtimestamp=actualtstamp) 
+        NewChat = ChatText(parentLeague=d['subname'], author=d['author'], timestamp=tstamp, commentText=d['chatText']) 
         NewChat.save()
         raise web.seeother('/') 
 class chat_get:
