@@ -6,7 +6,9 @@ myApp.controller('LoginCtrl', ['$scope','LoginService', function($scope, LoginSe
 			  	$scope.loggedIn = 1;
 			  	$scope.loginState = "success";
 			  	$scope.loginMsg = 'Logged In.';
-
+			  	LoginService.get($scope.inUser, function (data) {
+			  		$scope.json_loginData = data;
+			  	})
 			  }
 		var onFailure = function() {
 			  	$scope.loggedIn = 0
@@ -15,7 +17,10 @@ myApp.controller('LoginCtrl', ['$scope','LoginService', function($scope, LoginSe
 		}
 		LoginService.post($scope.inUser, $scope.inPassword, onSuccess, onFailure)
 	}
+	$scope.getInfo = function(inUser) {
+		$http.get('userinfo/%s' %(inUser))
 
+	}
 
 }])
 
@@ -24,6 +29,8 @@ myApp.controller('MainPageCtrl',  ['$scope', '$location', 'Service_Shared', 'Sig
 	$scope.gotoDash = function() {
 		$location.path("http://" + $scope.inEnteredSubname + '.leaguedashboard.com');
 	}
+
+
 	$scope.signup = function() {
 		$scope.showAlert = 1;
 		$scope.signupState = "info";
@@ -32,7 +39,6 @@ myApp.controller('MainPageCtrl',  ['$scope', '$location', 'Service_Shared', 'Sig
 			  	$scope.postResult = 1;
 			  	$scope.signupState = "success";
 			  	$scope.signupMsg = 'Your dashboard was created.';
-
 			  }
 		var onFailure = function() {
 			  	$scope.postResult = -1;	

@@ -40,7 +40,8 @@ urls = (
     '/login','Login',
     '/logout','Logout',
 
-
+    # Login form??
+    '/userinfo/(.*)', 'userinfo',
     # Login form??
     '/users/(.*)', 'login_class',
 
@@ -256,7 +257,14 @@ class ff_teamRoster:
 #         url = 'http://games.espn.go.com/ffl/clubhouse?leagueId=%s&teamId=%s&seasonId=%s'
 
         
+class userinfo:
+    def GET(self, username):
+        web.header('Content-Type', 'application/json')
+        web.header('Access-Control-Allow-Origin', '*')
+        web.header('Access-Control-Allow-Credentials', 'true')
 
+        userData = User.objects.filter(username=username)
+        return serializers.serialize("json", userData)
 class signup:
     def POST(self):
         i = web.input()
