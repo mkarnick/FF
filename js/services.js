@@ -108,7 +108,7 @@ myApp.factory('LoginService',function($http) {
 	LoginService.get = function(inUser, callback) {
 		$http.get('/userinfo/' + inUser, {username:inUser, password:inPassword}).
 		callback(data);
-	}}
+	}
 
 
 

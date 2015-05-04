@@ -17,11 +17,6 @@ myApp.controller('LoginCtrl', ['$scope','LoginService', function($scope, LoginSe
 		}
 		LoginService.post($scope.inUser, $scope.inPassword, onSuccess, onFailure)
 	}
-	$scope.getInfo = function(inUser) {
-		$http.get('userinfo/%s' %(inUser))
-
-	}
-
 }])
 
 myApp.controller('MainPageCtrl',  ['$scope', '$location', 'Service_Shared', 'SignupService', function($scope, $location, Service_Shared, SignupService) {
