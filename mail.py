@@ -18,6 +18,8 @@ def email(to):
 	print "Message length is " + repr(len(msg))
 
 	server = smtplib.SMTP('smtp.gmail.com:587')
+	server.ehlo()
+	server.starttls()
 	print "Logging in."
 	server.login('matt.karnick@gmail.com','103350855')
 	print "Logged in."
