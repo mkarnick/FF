@@ -14,11 +14,14 @@ class player:
 		self.position=position
 		self.slot=slot
 class matchupScore:
-    def __init__(self, ateam, bteam, ascore, bscore):
+    def __init__(self, ateam, bteam, ascore, bscore, url=''):
         self.ateam = ateam
         self.bteam = bteam
         self.ascore = ascore
         self.bscore = bscore
+        self.url = url
+    def getTotal(self):
+        return self.ascore + self.bscore
 
 class teamRoster:
 	def __init__(self, player):

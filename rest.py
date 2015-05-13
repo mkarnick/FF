@@ -24,6 +24,7 @@ import xml.etree.ElementTree as ET
 # from mattyballapp.models_top import Players
 # from mattyballapp.models import ViewAllAvgranksandcounts, CheckUniqueTeamsInPlayerstable
 import json
+import mail
 
 # tree = ET.parse('user_data.xml')
 # root = tree.getroot()
@@ -199,7 +200,7 @@ class ff_scores:
             teamAscore = m.find_all(class_='score')[0].string
             teamBname = m.find_all('a')[1].string
             teamBscore = m.find_all(class_='score')[1].string
-            thisMatchupObj = matchupScore(ateam=teamAname, bteam=teamBname, ascore=teamAscore, bscore=teamBscore)
+            thisMatchupObj = matchupScore(ateam=teamAname, bteam=teamBname, ascore=teamAscore, bscore=teamBscore, url=url)
             matchupList.append(thisMatchupObj.__dict__)
         return json.dumps(matchupList)
 
@@ -280,6 +281,7 @@ class signup:
             if len(existing) == 0:
                 newSignup = Subdomain(subname=d['subname'], leagueId=int(d['leagueId']), email=d['email']) 
                 newSignup.save()
+                mail.email(d['email'])
             else:
                 print "Object exists. Bailing out."
                 raise web.internalerror("webb internal error son")
