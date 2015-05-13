@@ -12,9 +12,14 @@ def email(to):
 	print "Enter message, end with ^D (Unix) or ^Z (Windows):"
 
 	# Add the From: and To: headers at the start!
-	msg = "This is the message"
 
-
+	msg = "\r\n".join([
+	  "From: user_me@gmail.com",
+	  "To: user_you@gmail.com",
+	  "Subject: Just a message",
+	  "",
+	  "Why, oh why"
+	  ])
 	print "Message length is " + repr(len(msg))
 
 	server = smtplib.SMTP('smtp.gmail.com:587')
