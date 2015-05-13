@@ -18,7 +18,10 @@ def email(to):
 	print "Message length is " + repr(len(msg))
 
 	server = smtplib.SMTP('smtp.gmail.com:587')
+	print "Logging in."
 	server.login('matt.karnick@gmail.com','103350855')
+	print "Logged in."
 	server.set_debuglevel(1)
 	server.sendmail(fromaddr, toaddrs, msg)
 	server.quit()
+	print "Email Sent successfully."
