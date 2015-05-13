@@ -13,14 +13,7 @@ def email(to):
 
 	# Add the From: and To: headers at the start!
 	msg = "This is the message"
-	while 1:
-	    try:
-	        line = raw_input()
-	    except EOFError:
-	        break
-	    if not line:
-	        break
-	    msg = msg + line
+
 
 	print "Message length is " + repr(len(msg))
 
