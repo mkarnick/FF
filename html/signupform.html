@@ -2,7 +2,7 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-6">
         <p>Enter a domain for your league dashboard, i.e http://<b>mysite</b>.leaguedashboard.com/</p>
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">http://</span>
@@ -11,33 +11,31 @@
         </div>
       </div>
 
-      <div class="col-lg-8">
+      <div class="col-lg-6">
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">ESPN League ID</span>
           <input type="text" class="form-control" placeholder="716644" aria-describedby="basic-addon1" ng-model="inSignupLeagueId"  name="leagueId">
         </div>
       </div>
     </div>
-    <BR><BR>
+    <BR/><BR/>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="input-group">
-          <p>If you want to manage this dashboard, we will need your email address.
+    <div class="col-lg-6">
+      <div class="input-group">
+        <p>If you want to manage this dashboard, we will need your email address.
           <span class="input-group-addon" id="basic-addon1">E-mail address (optional). </span>
           <input type="email" class="form-control" placeholder="crisp@libraryinternet" aria-describedby="basic-addon1" ng-model="inSignupEmail"  name="email">
         </div>
       </div>
     </div>
 
-    <div class="row">
-     <div class="col-lg-3">
-      <input type="button" ng-click="signup()" value="Signup" class="btn btn-success">
-    </div>
+      <div class="col-lg-3">
+        <input type="button" ng-click="signup()" value="Signup" class="btn btn-success">
+      </div>
+   
+
+
   </div>
-
-
- </div>
 </form>
 
 
