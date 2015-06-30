@@ -78,10 +78,10 @@ class Login:
         web.header('Content-Type', 'application/json')
         web.header('Access-Control-Allow-Origin', '*')
         web.header('Access-Control-Allow-Credentials', 'true')
-        print web.data()
+        #print web.data()
         d = json.loads(web.data())
-        print d
-        print "Checking for existing user"
+        #print d
+        print "Checking for existing user %s/%s" %(username=d['username'], password=d['password'])
         existing = User.objects.filter(username=d['username'], password=d['password'])
 
         if len(existing) == 0:
@@ -239,8 +239,8 @@ class ff_teamRoster:
                     aLoc = fullString.find('</a>')
                     subString = fullString[strLen-7:strLen]
                     pos = subString[0:2]
-                    print fullString
-                    print subString
+                    #print fullString
+                    #print subString
                     objPlayer = player(name=thisPlayerName, position=pos, slot=thisPlayerSlot)
                     #print pos
                     foundPlayers.append(objPlayer.__dict__)
@@ -272,10 +272,10 @@ class signup:
         web.header('Content-Type', 'application/json')
         web.header('Access-Control-Allow-Origin', '*')
         web.header('Access-Control-Allow-Credentials', 'true')
-        print web.data()
+        #print web.data()
         d = json.loads(web.data())
-        print d
-        print "Checking for existing obj"
+        #print d
+        print "Checking for existing obj %s" %(subname=d['subname'])
         existing = Subdomain.objects.filter(subname=d['subname'])
         try:
             if len(existing) == 0:
@@ -301,7 +301,7 @@ class chat_submit:
         web.header('Access-Control-Allow-Origin', '*')
         web.header('Access-Control-Allow-Credentials', 'true')
 
-        print web.data()
+        #print web.data()
         d = json.loads(web.data())
         import datetime, time
         ts = time.time()
