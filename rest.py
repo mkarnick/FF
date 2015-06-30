@@ -81,7 +81,7 @@ class Login:
         #print web.data()
         d = json.loads(web.data())
         #print d
-        print "Checking for existing user %s/%s" %(username=d['username'], password=d['password'])
+        print "Checking for existing user %s/%s" %(d['username'], d['password'])
         existing = User.objects.filter(username=d['username'], password=d['password'])
 
         if len(existing) == 0:
@@ -275,7 +275,7 @@ class signup:
         #print web.data()
         d = json.loads(web.data())
         #print d
-        print "Checking for existing obj %s" %(subname=d['subname'])
+        print "Checking for existing obj %s" %(d['subname'])
         existing = Subdomain.objects.filter(subname=d['subname'])
         try:
             if len(existing) == 0:
