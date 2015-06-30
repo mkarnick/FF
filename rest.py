@@ -315,8 +315,14 @@ class chat_get:
         web.header('Content-Type', 'application/json')
         web.header('Access-Control-Allow-Origin', '*')
         web.header('Access-Control-Allow-Credentials', 'true')
-
-        chatData = ChatText.objects.filter(parentLeague=inSub)[0:10]
+        chatSize = len(ChatText.objects.filter(parentLeague=inSub).objects.all())
+        if chatSize < 10:
+            chatE=chatSize
+            chatS=0
+        else:
+            chatS=chatSize-10
+            chatE=chatSize
+        chatData = ChatText.objects.filter(parentLeague=inSub)[chatS:chatE]
         return serializers.serialize("json", chatData)
 if __name__ == '__main__':
     def internalerror():
