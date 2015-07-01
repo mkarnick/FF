@@ -310,7 +310,7 @@ class chat_submit:
         estnow = datetime.now(eastern)
         tstamp = estnow.strftime(timePattern)
         # #print web.data()
-        # d = json.loads(web.data())
+        d = json.loads(web.data())
         # import datetime, time
         # ts = time.time()
         # tstamp = datetime.datetime.now().strftime(timePattern)
