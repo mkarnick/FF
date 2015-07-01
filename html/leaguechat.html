@@ -5,7 +5,7 @@
   </div>
   <div class="panel-body">
 
-    <span ng-repeat="comment in json_chatData track by $index">{{comment.fields.timestamp}} {{comment.fields.author}}: {{comment.fields.commentText}}<BR/>
+    <span ng-repeat="comment in json_chatData track by $index">[{{comment.fields.timestamp}}] <b>{{comment.fields.author}}</b>: {{comment.fields.commentText}}<BR/>
     </span>
 
     <div class="form-inline">
