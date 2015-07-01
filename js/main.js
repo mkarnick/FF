@@ -96,6 +96,7 @@ myApp.controller('DashCtrl', ['$scope', '$interval', 'Data_TeamList', 'Data_AllR
 	}
 
 
+
 	$scope.refreshChat = function() {
 		Data_Chat.get($scope.inSubname, function (data) {
 			$scope.json_chatData = data;
