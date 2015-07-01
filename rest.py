@@ -315,7 +315,7 @@ class chat_get:
         web.header('Content-Type', 'application/json')
         web.header('Access-Control-Allow-Origin', '*')
         web.header('Access-Control-Allow-Credentials', 'true')
-        chatSize = len(ChatText.objects.filter(parentLeague=inSub).objects.all())
+        chatSize = len(ChatText.objects.filter(parentLeague=inSub))
         if chatSize < 10:
             chatE=chatSize
             chatS=0
