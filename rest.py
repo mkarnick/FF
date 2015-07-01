@@ -301,17 +301,26 @@ class chat_submit:
         web.header('Access-Control-Allow-Origin', '*')
         web.header('Access-Control-Allow-Credentials', 'true')
 
-        #print web.data()
-        d = json.loads(web.data())
-        import datetime, time
-        ts = time.time()
-        tstamp = datetime.datetime.now().strftime('%I:%M%p')
+        timePattern ='%I:%M%p'
+        from datetime import datetime, timedelta
+        from pytz import timezone
+        import pytz
+        utc = pytz.utc
+        eastern = timezone('US/Eastern')
+        estnow = datetime.now(eastern)
+        tstamp = estnow.strftime(timePattern)
+        # #print web.data()
+        # d = json.loads(web.data())
+        # import datetime, time
+        # ts = time.time()
+        # tstamp = datetime.datetime.now().strftime(timePattern)
         actualtstamp = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
         NewChat = ChatText(parentLeague=d['subname'], author=d['author'], timestamp=tstamp, commentText=d['chatText']) 
         NewChat.save()
         raise web.seeother('/') 
 class chat_get:
     def GET(self, inSub):
+
         web.header('Content-Type', 'application/json')
         web.header('Access-Control-Allow-Origin', '*')
         web.header('Access-Control-Allow-Credentials', 'true')
@@ -323,6 +332,7 @@ class chat_get:
             chatS=chatSize-10
             chatE=chatSize
         chatData = ChatText.objects.filter(parentLeague=inSub)[chatS:chatE]
+
         return serializers.serialize("json", chatData)
 if __name__ == '__main__':
     def internalerror():
