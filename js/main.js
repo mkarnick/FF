@@ -117,7 +117,13 @@ myApp.controller('DashCtrl', ['$scope', '$interval', 'Data_TeamList', 'Data_AllR
 		$scope.ff_scores();
 	}
 
+	$scope.sampleEvent = function() {
+		$http.get('http://karnick.me/sampleURL/' + inSub).success(function(data) {
+			alert('http success. writing to sampleData');
+			$scope.sampleData = callback(data);
+		});
 
+	}
 
 
 	$scope.signup = function() {
